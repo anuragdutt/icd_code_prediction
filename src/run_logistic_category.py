@@ -79,7 +79,7 @@ if __name__ == "__main__":
 	
 		lr.fit(lab_train_matrix, y_train)
 		# print("Ending Training")
-		y_pred = lr.predict(lab_test)
+		y_pred = lr.predict(lab_test_matrix)
 		f1 = f1_score(y_test, y_pred)
 		acc = accuracy_score(y_test, y_pred)
 		recall = recall_score(y_test, y_pred)
