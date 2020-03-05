@@ -76,24 +76,21 @@ if __name__ == "__main__":
 		print("icd codes in each iteration:")
 		print(len(e))
 		# print("Starting training")
-		try:
-			lr.fit(lab_train_matrix, y_train)
-			# print("Ending Training")
-			y_pred = lr.predict(lab_test)
-			f1 = f1_score(y_test, y_pred)
-			acc = accuracy_score(y_test, y_pred)
-			recall = recall_score(y_test, y_pred)
-			prec = precision_score(y_test, y_pred)
+	
+		lr.fit(lab_train_matrix, y_train)
+		# print("Ending Training")
+		y_pred = lr.predict(lab_test)
+		f1 = f1_score(y_test, y_pred)
+		acc = accuracy_score(y_test, y_pred)
+		recall = recall_score(y_test, y_pred)
+		prec = precision_score(y_test, y_pred)
 
-			prob_true = sum(y_test)/len(y_test)
-			prob_pred = sum(y_pred)/len(y_pred)
-
-		except:
-			f1 = 0.0
-			acc = 0.0
-			recall = 0.0
-			prec = 0.0
-			print("value error detected. one class of values encountered.")
+		# except:
+		# 	f1 = 0.0
+		# 	acc = 0.0
+		# 	recall = 0.0
+		# 	prec = 0.0
+		# 	print("value error detected. one class of values encountered.")
 
 		print(f1)
 
