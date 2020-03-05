@@ -49,6 +49,11 @@ if __name__ == "__main__":
 	icd_test_pids = np.load("../data/icd_test.pids", allow_pickle = True)
 
 	ret_list = []
+	print("lab train matrix shape:")
+	print(lab_train_matrix.shape)
+	print("icd train matrix shape:")
+	print(icd_train_matrix.shape)
+
 
 	for e in dat_list:
 		e['col_code'] = e['code'].apply(lambda x: ''.join(['D_', x]))
@@ -64,12 +69,17 @@ if __name__ == "__main__":
 		x_train = x_train.drop(['sum'], axis = 1)
 		x_test = x_test.drop(['sum'], axis = 1)
 
-		lr = LogisticRegression(max_iter = 500, random_state = 0)
+
+		lr = LogisticRegression(max_iter = 500, random_state = 0, class_weight="balanced")
+		print("Total sum of cases for each disease:")
+		print(np.sum(y_train))
+		print("icd codes in each iteration:")
+		print(len(e))
 		# print("Starting training")
 		try:
-			lr.fit(x_train, y_train)
+			lr.fit(lab_train_matrix, y_train)
 			# print("Ending Training")
-			y_pred = lr.predict(x_test)
+			y_pred = lr.predict(lab_test)
 			f1 = f1_score(y_test, y_pred)
 			acc = accuracy_score(y_test, y_pred)
 			recall = recall_score(y_test, y_pred)
