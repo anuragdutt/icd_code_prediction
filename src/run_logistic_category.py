@@ -70,7 +70,7 @@ if __name__ == "__main__":
 		x_test = x_test.drop(['sum'], axis = 1)
 
 
-		lr = LogisticRegression(class_weight="balanced")
+		lr = LogisticRegression(max_iter = 1000, class_weight="balanced")
 		print("Total sum of cases for each disease:")
 		print(np.sum(y_train))
 		print("icd codes in each iteration:")
