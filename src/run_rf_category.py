@@ -92,7 +92,6 @@ if __name__ == "__main__":
 		    'bootstrap': [True],
 		    'max_depth': [50,100, 200, 300],
 		    'min_samples_leaf': [10, 30, 50, 70, 90],
-		    'min_samples_split': [10, 20, 50],
 		    'n_estimators': [200, 400, 600, 800, 1000]
 		}
 
