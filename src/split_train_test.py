@@ -44,14 +44,29 @@ if __name__ == "__main__":
 
 	lab_train_median = lab_train.median(axis = 0)
 	lab_train = lab_train.fillna(lab_train_median)
+	lab_test_median = lab_test.median(axis = 0)
+	lab_test = lab_test.fillna(lab_test_median)
+	
+
 	nan_train_header = np.array(lab_train_header)[lab_train_median.isna()].tolist()
 	lab_train = lab_train.drop(nan_train_header, axis = 1)
 	lab_test = lab_test.drop(nan_train_header, axis = 1)
+
+	lab_test_header = lab_test.columns.tolist()
+	lab_test_median_chk = lab_test.median(axis = 0)
+	nan_test_header = np.array(lab_test_header)[lab_test_median_chk.isna()].tolist()
+	lab_test = lab_test.drop(nan_test_header, axis = 1)
+	lab_train = lab_train.drop(nan_test_header, axis = 1)
+
+
 	lab_train_header = lab_train.columns.tolist()
-	lab_test_header = lab_train_header
+	lab_test_header = lab_test.columns.tolist()
 
 	print(len(lab_train_header))
+	print(len(lab_test_header))
 	print(len(lab_header))
+	print(lab_train_header)
+	print(lab_test_header)	
 
 	lab_train_matrix = np.asarray(lab_train)
 	lab_train_header = dict(zip(lab_train_header, range(len(lab_train_header))))
