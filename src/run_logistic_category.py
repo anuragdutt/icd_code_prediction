@@ -70,7 +70,7 @@ if __name__ == "__main__":
 		x_test = x_test.drop(['sum'], axis = 1)
 
 
-		lr = LogisticRegression(max_iter = 500, random_state = 0, class_weight="balanced")
+		lr = LogisticRegression(class_weight="balanced")
 		print("Total sum of cases for each disease:")
 		print(np.sum(y_train))
 		print("icd codes in each iteration:")
@@ -96,7 +96,6 @@ if __name__ == "__main__":
 			print("value error detected. one class of values encountered.")
 
 		print(f1)
-
 
 		retl = [ccs, f1, acc, recall, prec]
 		ret_list.append(retl)
