@@ -89,7 +89,7 @@ if __name__ == "__main__":
 		base_accuracy = evaluate(base_model, lab_test_matrix, y_test)
 
 		param_grid = {
-		    'bootstrap': [True, False],
+		    'bootstrap': [True],
 		    'max_depth': [50,100, 200, 300],
 		    'min_samples_leaf': [10, 30, 50, 70, 90],
 		    'min_samples_split': [10, 20, 50],
@@ -122,7 +122,7 @@ if __name__ == "__main__":
 		# 	prec = 0.0
 		# 	print("value error detected. one class of values encountered.")
 
-		print(f1)
+		print("The f1 score of the iteration is:", f1)
 
 		retl = [ccs, f1, acc, recall, prec]
 		ret_list.append(retl)
